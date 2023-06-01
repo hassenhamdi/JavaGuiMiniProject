@@ -1,2 +1,2 @@
 # JavaGuiMiniProject
-Mini-Project Using JavaSwing API and SQLite as DataBase 
+Mini-Project Using JavaSwing API and MySQL as DataBase 
