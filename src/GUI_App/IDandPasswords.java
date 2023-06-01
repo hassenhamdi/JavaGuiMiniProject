@@ -10,6 +10,8 @@ public class IDandPasswords {
 		
 		logininfo.put("admin","adminpwd");
 	}
+        IDandPasswords(String username,String password){
+        }
 	
 	@SuppressWarnings("rawtypes")
 	public HashMap getLoginInfo(){

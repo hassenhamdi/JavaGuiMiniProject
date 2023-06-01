@@ -87,7 +87,7 @@ public class Vehicule extends JFrame {
 		jLabel2.setText("Marque");
 
 		ldis.setFont(new Font("Tahoma", 1, 18));
-		ldis.setText("Disponibilité");
+		ldis.setText("Disponibilitï¿½");
 
 		add.setFont(new Font("Tahoma", 1, 14));
 		add.setText("Ajout");
@@ -204,7 +204,7 @@ public class Vehicule extends JFrame {
 
 		tab.setModel(new DefaultTableModel(new Object[][] {
 
-		}, new String[] { "Matricule", "Marque", "Modele", "Couleur", "Disponibilté" }) {
+		}, new String[] { "Matricule", "Marque", "Modele", "Couleur", "Disponibiltï¿½" }) {
 			@SuppressWarnings("rawtypes")
 			Class[] types = new Class[] { java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class };
 
@@ -295,7 +295,7 @@ public class Vehicule extends JFrame {
 			insert.setString(5, disp);
 
 			insert.executeUpdate();
-			JOptionPane.showMessageDialog(this, "La voiture a été enregistrée avec succéss");
+			JOptionPane.showMessageDialog(this, "La voiture a ï¿½tï¿½ enregistrï¿½e avec succï¿½ss");
 
 			tmarq.setText("");
 			tmod.setText("");
@@ -334,7 +334,7 @@ public class Vehicule extends JFrame {
 			insert.setString(3, color);
 			insert.setString(5, matricule);
 			insert.executeUpdate();
-			JOptionPane.showMessageDialog(this, "Le registre a été mis à jour");
+			JOptionPane.showMessageDialog(this, "Le registre a ï¿½tï¿½ mis ï¿½ jour");
 
 			edit.setEnabled(false);
 			add.setEnabled(true);
@@ -368,7 +368,7 @@ public class Vehicule extends JFrame {
 			insert.setString(4, disp);
 			insert.setString(5,matricule);
 			insert.executeUpdate();
-			JOptionPane.showMessageDialog(this, "Le registre a été mis à jour");
+			JOptionPane.showMessageDialog(this, "Le registre a ï¿½tï¿½ mis ï¿½ jour");
 
 			edit.setEnabled(false);
 			add.setEnabled(true);
@@ -494,6 +494,29 @@ public class Vehicule extends JFrame {
 		}
 	}
 	public static void main(String args[]) {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                System.out.println("Class name : " + info.getClassName() +" " + info.getName());
+                if ("Windows".equals(info.getName())) {
+                    /*
+                    Class name : javax.swing.plaf.metal.MetalLookAndFeel Metal
+                    Class name : javax.swing.plaf.nimbus.NimbusLookAndFeel Nimbus
+                    Class name : com.sun.java.swing.plaf.motif.MotifLookAndFeel CDE/Motif
+                    Class name : com.sun.java.swing.plaf.windows.WindowsLookAndFeel Windows
+                    Class name : com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel Windows Classic 
+                    */
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Vehicule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Vehicule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Vehicule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Vehicule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				new Vehicule().setVisible(true);

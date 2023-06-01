@@ -10,7 +10,7 @@ import java.awt.*;
 public class MainApp extends JFrame implements ActionListener {
 
 	JLabel sessionLabel = new JLabel("Session");
-    JLabel label = new JLabel();
+        JLabel label = new JLabel();
 	JButton garageMan = new JButton("Vehicule") ;
 	JButton clientMan = new JButton("Clients") ;
 	JButton exit  = new JButton("Log off") ;
@@ -22,8 +22,8 @@ public class MainApp extends JFrame implements ActionListener {
 		
 	
 		label.setFont(new Font("Tahoma", 1, 36)); // NOI18N
-        label.setForeground(new Color(0, 0, 255));
-        label.setText("Gestionnaire");
+                label.setForeground(new Color(0, 0, 255));
+                label.setText("Gestionnaire");
 		panel.setVisible(false);
 		panel.setSize(300,400);
 		this.setTitle("session :" + userID);
@@ -151,7 +151,7 @@ public class MainApp extends JFrame implements ActionListener {
     @SuppressWarnings({ "deprecation", "unchecked" })
 	private void logoffActionPerformed(ActionEvent evt) {
     	IDandPasswords idandPasswords = new IDandPasswords();
-    	LoginPage lo = new LoginPage(idandPasswords.getLoginInfo());       
+    	LoginPage lo = new LoginPage();       
         this.hide();
         lo.setVisible(true);
     }

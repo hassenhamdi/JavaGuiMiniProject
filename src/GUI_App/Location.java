@@ -10,13 +10,12 @@ import java.util.logging.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import com.toedter.calendar.JDateChooser;
-
 /**
 *
 * @author Hassen Hamdi
 */
 
-
+	
 @SuppressWarnings("serial")
 public class Location extends JFrame {
 	private JButton Annuler;
@@ -115,7 +114,7 @@ public class Location extends JFrame {
 
         datedeb.setText("Date de depart");
 
-        datefin.setText("Date du écheance");
+        datefin.setText("Date du ï¿½cheance");
 
         ok.setText("ok");
         ok.addActionListener(new ActionListener() {
@@ -307,7 +306,7 @@ public class Location extends JFrame {
 
                 if (rs.next() == false) {
 
-                    JOptionPane.showMessageDialog(null, "Client non trouvée");
+                    JOptionPane.showMessageDialog(null, "Client non trouvï¿½e");
                 } else {
                     String productname = rs.getString("nom");
 
@@ -335,7 +334,7 @@ public class Location extends JFrame {
 
             if (rs1.next() == false) 
             {
-                JOptionPane.showMessageDialog(null, "Voiture non trouvée");
+                JOptionPane.showMessageDialog(null, "Voiture non trouvï¿½e");
             } 
             else {            
                 String d = rs1.getString("disponibilite");
@@ -373,6 +372,22 @@ public class Location extends JFrame {
         dispose();
     }                                       
     public static void main(String args[]) {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Location .class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Location .class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Location .class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Location .class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Location().setVisible(true);

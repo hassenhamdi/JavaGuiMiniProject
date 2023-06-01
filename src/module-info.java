@@ -5,6 +5,9 @@ module info {
 	requires java.logging;
 	requires java.sql;
 	requires jcalendar;
-	
+        requires jgoodies.common;
+        requires jgoodies.looks;
+        requires junit;
+		requires com.formdev.flatlaf;	
 
 }

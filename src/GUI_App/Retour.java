@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class Retour extends JFrame {
     private String URL= "jdbc:mysql://127.0.0.1:3306/projetjava?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=GMT";
     private JButton annuler;
+    private JButton facture;
     private JTextField ccin;
     private JLabel cinl;
     private JLabel datretlab;
@@ -61,6 +62,7 @@ public class Retour extends JFrame {
         retlab = new JLabel();
         feelab = new JLabel();
         ok = new JButton();
+        facture = new JButton();
         annuler = new JButton();
         retourlab = new JLabel();
         jScrollPane1 = new JScrollPane();
@@ -108,6 +110,15 @@ public class Retour extends JFrame {
                 annulerActionPerformed(evt);
             }
         });
+        facture.setText("Facture");
+        facture.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                factureActionPerformed(evt);
+            }
+
+			
+        });
+
         GroupLayout panelLayout = new GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
@@ -140,7 +151,7 @@ public class Retour extends JFrame {
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addComponent(ok, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
+                        .addComponent(facture, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
                         .addComponent(annuler, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
@@ -170,6 +181,7 @@ public class Retour extends JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(panelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(ok, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(facture, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
                     .addComponent(annuler, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
@@ -266,7 +278,7 @@ public class Retour extends JFrame {
                 rs = pst.executeQuery();  
                 if(rs.next()==false)
                 {                   
-                    JOptionPane.showMessageDialog(null, "Voiture non trouvée");
+                    JOptionPane.showMessageDialog(null, "Voiture non trouvï¿½e");
                 }
                 else
                 {
@@ -329,7 +341,7 @@ public class Retour extends JFrame {
             pst2 = con.prepareStatement("Delete from Location where matricule = ?  ");
             pst2.setString(1, matxt1);
             pst2.executeUpdate();                        
-            JOptionPane.showMessageDialog(this, "Mise à jour avec Success");
+            JOptionPane.showMessageDialog(this, "Mise ï¿½ jour avec Success");
             table_update();
         } 
           catch (ClassNotFoundException ex)
@@ -340,14 +352,33 @@ public class Retour extends JFrame {
           {
             Logger.getLogger(Location.class.getName()).log(Level.SEVERE, null, ex);           
         }       
-    }                                  
+    }
+    private void factureActionPerformed(ActionEvent evt) {
+    	new Facturedial(this,true).setVisible(true);
+	}
     private void annulerActionPerformed(ActionEvent evt) {                                        
          setVisible(false);
         dispose();
     }                                       
     private void datretxtActionPerformed(ActionEvent evt) {                                         
     }                                        
-    public static void main(String args[]) {        
+    public static void main(String args[]) {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Retour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Retour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Retour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Retour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Retour().setVisible(true);
